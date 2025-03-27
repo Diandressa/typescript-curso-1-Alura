@@ -5,9 +5,6 @@
 //     event.preventDefault();
 //     controller.adiciona();
 // });
-
 import { Negociacao } from "./models/negociacao.js";
-
-const negociacao = new Negociacao(new Date());
-
-console.log(negociacao.volumeGet)
+const negociacao = new Negociacao(new Date(), 10, 100);
+console.log(negociacao.volume);
