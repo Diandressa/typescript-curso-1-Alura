@@ -22,15 +22,14 @@ export class NegociacaoController {
         //adicionar na lista negociacoes
         this.negociacoes.adiciona(negociacao);
 
-        //this.negociacoes.lista().pop();
-        //com o spread no metodo lista() em negociacoes, o pop afeta a copia da lista e não a original.
-        //O operador pop() na cópia não afeta a lista original. 
-        /*
-        Impressão da lista com console.log(this.negociacoes.lista()): Como a lista é copiada dentro do método lista(), o que você está imprimindo é a cópia da lista. Mesmo que você tenha usado pop() na cópia, a lista original não foi alterada.
-        */
+        //lista é readonly
+        this.negociacoes.lista().pop();        
 
         //imprime a lista no console
-        console.log(this.negociacoes.lista())
+        const negociacoesLista = this.negociacoes.lista()
+        console.log(negociacoesLista)
+        //lista é readonly, não pode ser alterado
+        negociacoesLista.push()
 
         //limpa o form
         this.limparFormulario();
