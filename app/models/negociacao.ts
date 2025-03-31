@@ -1,42 +1,11 @@
-// export class Negociacao {
-//     constructor(
-//         private _data: Date, 
-//         public readonly quantidade: number, 
-//         public readonly valor: number
-//     ) {}
-
-//     get volume(): number {
-//         return this.quantidade * this.valor;
-//     }
-
-//     get data(): Date {
-//         const data = new Date(this._data.getTime());
-//         return data;
-//     }
-// }
-
-// export class Negociacao {
-//     constructor(_data, quantidade, valor) {
-//         this._data = _data;
-//         this.quantidade = quantidade;
-//         this.valor = valor;
-//     }
-//     get volume() {
-//         return this.quantidade * this.valor;
-//     }
-//     get data() {
-//         const data = new Date(this._data.getTime());
-//         return data;
-//     }
-// }
-
 // O # é o private em javascript
 export class Negociacao {
-    private _data: Date;
+    //typescript consegue entender qual o tipo da variável pelo passado no constructor, mas para ficar claro colocamos os tipo aqui tb
+    private _data:Date;
     private _quantidade:number;
     private _valor:number;
 
-    constructor(data:Date, quantidade:number,valor:number){
+    constructor(data:Date, quantidade:number, valor:number){
         this._data = data;
         this._quantidade = quantidade;
         this._valor = valor;

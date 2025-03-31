@@ -94,6 +94,13 @@ Só compila se não tiver nenhum erro
 
     Precisamos usar a pasta app para colocar os arquivos ts e a pasta dist para receber os arquivos ts compilados para js. Assim o navegador que lê a pasta dist consegue interpretar/entender.
 
+### Tipos de elementos
+
+    Input: HTMLInputElement
+    Números: Number
+    Datas: Date
+    Texto: String
+
 ### Comando para rodar o projeto
 
 Compilar:
