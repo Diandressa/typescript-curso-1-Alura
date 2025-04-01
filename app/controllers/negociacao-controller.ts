@@ -19,6 +19,13 @@ export class NegociacaoController {
     adiciona():void{
         const negociacao = this.criaNegociacao();
 
+        //não posso atribuir um novo valor para readonly
+        //negociacao.data = new Date();
+
+        //porém ainda podemos alterar com métodos do js, altera a data para dia 12
+        //o readonly só não deixa atribuir, mas permite manipular com metodos/funcoes js
+        negociacao.data.setDate(12)
+
         //adicionar na lista negociacoes
         this.negociacoes.adiciona(negociacao);        
 
