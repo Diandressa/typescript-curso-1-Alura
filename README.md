@@ -101,6 +101,10 @@ Só compila se não tiver nenhum erro
     Datas: Date
     Texto: String
 
+### Generic types - Array 
+
+![Generic array](https://yakovfain.com/wp-content/uploads/2019/03/lib_d_ts.png?w=760)
+
 ### Comando para rodar o projeto
 
 Compilar:
