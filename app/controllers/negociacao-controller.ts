@@ -20,16 +20,11 @@ export class NegociacaoController {
         const negociacao = this.criaNegociacao();
 
         //adicionar na lista negociacoes
-        this.negociacoes.adiciona(negociacao);
-
-        //lista é readonly
-        this.negociacoes.lista().pop();        
+        this.negociacoes.adiciona(negociacao);        
 
         //imprime a lista no console
         const negociacoesLista = this.negociacoes.lista()
         console.log(negociacoesLista)
-        //lista é readonly, não pode ser alterado
-        negociacoesLista.push()
 
         //limpa o form
         this.limparFormulario();
