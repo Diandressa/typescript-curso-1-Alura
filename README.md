@@ -12,6 +12,10 @@
 
 ### Iniciar projeto
 
+Crie o arquivo package.json
+
+`npm init -y`
+
 No terminal, precisamos baixar os módulos da aplicação:
 
 `npm install`
