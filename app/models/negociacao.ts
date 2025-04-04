@@ -14,16 +14,8 @@ export class Negociacao {
     }
 
     get data():Date{
-        //criar uma refência/apontar para a cópia da data, e não ela original
-        //se eu modificar eu modifico a cópia e não a data guardada no _date original
         //criamos uma variável com o getDate que pega a data privada, porém é uma cópia agora, uma nova referência
         const data = new Date(this._data.getDate())
         return data;
     }
 }
-
-//consigo alterar quando está public
-/*
-const n = new Negociacao(new Date(), 23, 55);
-n._data = new Date();
-*/

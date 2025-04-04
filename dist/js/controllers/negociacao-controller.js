@@ -12,11 +12,6 @@ export class NegociacaoController {
     //retorna vazio
     adiciona() {
         const negociacao = this.criaNegociacao();
-        //não posso atribuir um novo valor para readonly
-        //negociacao.data = new Date();
-        //porém ainda podemos alterar com métodos do js, altera a data para dia 12
-        //o readonly só não deixa atribuir, mas permite manipular com metodos/funcoes js
-        // com o get também dá o mesmo problema
         //com o getDate na model, o setDate compila mas no navegador não altera a data
         //isso se chama programação defensiva
         negociacao.data.setDate(12);
