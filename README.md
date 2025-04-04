@@ -10,6 +10,9 @@
 
 [https://github.com/alura-cursos/typescript-curso-1](https://github.com/alura-cursos/typescript-curso-1)
 
+### Observações
+>O curso é divido em **3 partes**: a primeira parte está na branch **main**,  a segunda na branch **curso2**, e a terceira em **curso3**.
+
 ### Iniciar projeto
 
 Crie o arquivo package.json
