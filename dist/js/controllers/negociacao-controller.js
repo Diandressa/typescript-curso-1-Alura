@@ -1,13 +1,16 @@
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
+import { NegociacoesView } from "../views/negociacoes-view.js";
 export class NegociacaoController {
     constructor() {
-        //private negociacoes:Negociacoes;
-        //vamos instancia o elemento já, não precisa do tipo quando declaro um valor 
         this.negociacoes = new Negociacoes;
+        //passa o seletor do index.html para o construtor de negociacoes-view
+        this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
         this.inputValor = document.querySelector("#valor");
+        //chama o template toda vez
+        this.negociacoesView.template();
     }
     //retorna vazio
     adiciona() {
