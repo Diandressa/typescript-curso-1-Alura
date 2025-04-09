@@ -25,7 +25,8 @@ export class NegociacoesView {
                         ${model.lista().map(negociacao => {
                             return `
                             <tr>
-                                <td>?</td>
+                                <!-- date, considera a localidade do navegador atual e  formata ao exibir na tela-->
+                                <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
                                 <td>${negociacao.quantidade}</td>
                                 <td>${negociacao.valor}</td>
                             </tr>
