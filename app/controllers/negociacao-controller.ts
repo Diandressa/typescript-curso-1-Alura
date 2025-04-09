@@ -16,8 +16,8 @@ export class NegociacaoController {
         this.inputData = document.querySelector("#data")
         this.inputQuantidade = document.querySelector("#quantidade")
         this.inputValor = document.querySelector("#valor")
-        //chama o template toda vez
-        this.negociacoesView.template()
+        //chama o update trazendo o template e colocando na div assim que a página carrega
+        this.negociacoesView.update()
     }
 
     //retorna vazio
