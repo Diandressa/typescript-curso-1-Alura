@@ -4,7 +4,7 @@ export class NegociacoesView {
         //coloca o seletor na var elemento, que defini no construtor
         this.elemento = document.querySelector(seletor);
     }
-    template() {
+    template(model) {
         return `
             <table class="table table-hover table-bordered">
                 <thead>
@@ -14,15 +14,31 @@ export class NegociacoesView {
                         <th>VALOR</th>
                     </tr>
                     <tbody>
-
+                        <!-- Chama o método lista, que retorna o array e percorre o array com map-->
+                        <!-- O map retorna um array com a lista de strings-->
+                        ${model.lista().map(negociacao => {
+            return `
+                            <tr>
+                                <td>?</td>
+                                <td>${negociacao.quantidade}</td>
+                                <td>${negociacao.valor}</td>
+                            </tr>
+                            `;
+        }).join('')}
+                        <!-- o map converte cada objeto da lista em uma array de strings, depois, o join, junta as string tendo como separador o espaço-->
                     </tbody>
                 </thead>
             </table>
         `;
     }
     //metodo para atualizar o template
-    update() {
+    //recebe a model do controller no metodo update, que é a nossa lista/array - controller negociacoes instanciado
+    update(model) {
         //Sobrescreve no DOM o modelo criado em template() - renderiza esse elemento dentro de this.elemento, ou seja, dentro da div com id negociacoesView
-        this.elemento.innerHTML = this.template();
+        const template = this.template(model);
+        console.log(template);
+        //passa para o modelo
+        //this.elemento.innerHTML = this.template(model);
+        this.elemento.innerHTML = template;
     }
 }

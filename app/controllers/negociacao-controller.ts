@@ -16,8 +16,8 @@ export class NegociacaoController {
         this.inputData = document.querySelector("#data")
         this.inputQuantidade = document.querySelector("#quantidade")
         this.inputValor = document.querySelector("#valor")
-        //chama o update trazendo o template e colocando na div assim que a página carrega
-        this.negociacoesView.update()
+        //chama o update trazendo o template e colocando na div assim que a página carrega e construo o objeto
+        this.negociacoesView.update(this.negociacoes)
     }
 
     //retorna vazio
@@ -29,11 +29,14 @@ export class NegociacaoController {
         negociacao.data.setDate(12)
 
         //adicionar na lista negociacoes
-        this.negociacoes.adiciona(negociacao);        
+        this.negociacoes.adiciona(negociacao);  
+        
+        //depois de adicionar o item na lista eu chamo o update na view
+        this.negociacoesView.update(this.negociacoes)
 
         //imprime a lista no console
-        const negociacoesLista = this.negociacoes.lista()
-        console.log(negociacoesLista)
+        //const negociacoesLista = this.negociacoes.lista()
+        //console.log(negociacoesLista)
 
         //limpa o form
         this.limparFormulario();
