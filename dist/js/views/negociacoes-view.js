@@ -7,28 +7,31 @@ export class NegociacoesView {
     template(model) {
         return `
             <table class="table table-hover table-bordered">
+
                 <thead>
                     <tr>
                         <th>DATA</th>
                         <th>QUANTIDADE</th>
                         <th>VALOR</th>
                     </tr>
-                    <tbody>
-                        <!-- Chama o método lista, que retorna o array e percorre o array com map-->
-                        <!-- O map retorna um array com a lista de strings-->
-                        ${model.lista().map(negociacao => {
-            return `
-                            <tr>
-                                <!-- date, considera a localidade do navegador atual e  formata ao exibir na tela-->
-                                <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
-                                <td>${negociacao.quantidade}</td>
-                                <td>${negociacao.valor}</td>
-                            </tr>
-                            `;
-        }).join('')}
-                        <!-- o map converte cada objeto da lista em uma array de strings, depois, o join, junta as string tendo como separador o espaço-->
-                    </tbody>
                 </thead>
+                
+                <tbody>
+                    <!-- Chama o método lista, que retorna o array e percorre o array com map-->
+                    <!-- O map retorna um array com a lista de strings-->
+                    ${model.lista().map(negociacao => {
+            return `
+                        <tr>
+                            <!-- date, considera a localidade do navegador atual e  formata ao exibir na tela-->
+                            <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
+                            <td>${negociacao.quantidade}</td>
+                            <td>${negociacao.valor}</td>
+                        </tr>
+                        `;
+        }).join('')}
+                    <!-- o map converte cada objeto da lista em uma array de strings, depois, o join, junta as string tendo como separador o espaço-->
+                </tbody>
+                
             </table>
         `;
     }

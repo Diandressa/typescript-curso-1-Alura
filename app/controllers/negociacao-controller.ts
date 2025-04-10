@@ -1,5 +1,6 @@
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
+import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 
 export class NegociacaoController {
@@ -11,6 +12,8 @@ export class NegociacaoController {
 
     //passa o seletor do index.html para o construtor de negociacoes-view
     private negociacoesView = new NegociacoesView('#negociacoesView');
+
+    private mensagemView = new MensagemView("#mensagemView");
 
     constructor(){
         this.inputData = document.querySelector("#data")
@@ -33,6 +36,9 @@ export class NegociacaoController {
         
         //depois de adicionar o item na lista eu chamo o update na view
         this.negociacoesView.update(this.negociacoes)
+
+        //mensagem após adicionar
+        this.mensagemView.update("Negociações adicionada com sucesso");
 
         //imprime a lista no console
         //const negociacoesLista = this.negociacoes.lista()
