@@ -1,9 +1,9 @@
-export class NegociacoesView {
-    //seletor espera o id da index.html
-    constructor(seletor) {
-        //coloca o seletor na var elemento, que defini no construtor
-        this.elemento = document.querySelector(seletor);
-    }
+import { View } from "./view.js";
+//passa o tipo quando extende a View, mando esse tipo para classe View<>
+export class NegociacoesView extends View {
+    //herdar de View.ts os códigos iguais, herdar com extends na classe
+    //herdar template de View e enviar um retorno para lá
+    //template espera uma string no view.ts, não o tipo Negociacoes
     template(model) {
         return `
             <table class="table table-hover table-bordered">
@@ -35,14 +35,9 @@ export class NegociacoesView {
             </table>
         `;
     }
-    //metodo para atualizar o template
-    //recebe a model do controller no metodo update, que é a nossa lista/array - controller negociacoes instanciado
+    //update espera uma string no view.ts, não o tipo Negociacoes
     update(model) {
-        //Sobrescreve no DOM o modelo criado em template() - renderiza esse elemento dentro de this.elemento, ou seja, dentro da div com id negociacoesView
         const template = this.template(model);
-        console.log(template);
-        //passa para o modelo
-        //this.elemento.innerHTML = this.template(model);
         this.elemento.innerHTML = template;
     }
 }

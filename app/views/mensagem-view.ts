@@ -1,6 +1,7 @@
 import { View } from "./view.js";
 
-export class MensagemView extends View{
+//passa o tipo quando extende a View, mando esse tipo para classe View<>
+export class MensagemView extends View<string>{
     //herdar de View.ts os códigos iguais, herdar com extends na classe
 
     //herdar template de View e enviar um retorno para lá

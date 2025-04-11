@@ -1,7 +1,8 @@
 import { Negociacoes } from "../models/negociacoes.js";
 import { View } from "./view.js";
 
-export class NegociacoesView extends View{
+//passa o tipo quando extende a View, mando esse tipo para classe View<>
+export class NegociacoesView extends View<Negociacoes>{
   
     //herdar de View.ts os códigos iguais, herdar com extends na classe
 
@@ -42,7 +43,6 @@ export class NegociacoesView extends View{
     update(model: Negociacoes):void{
 
         const template = this.template(model);
-        console.log(template)
         this.elemento.innerHTML = template;
     }
 }
