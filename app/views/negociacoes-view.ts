@@ -5,6 +5,8 @@ export class NegociacoesView extends View{
   
     //herdar de View.ts os códigos iguais, herdar com extends na classe
 
+    //herdar template de View e enviar um retorno para lá
+    //template espera uma string no view.ts, não o tipo Negociacoes
     template(model: Negociacoes):string {
         return `
             <table class="table table-hover table-bordered">
@@ -36,18 +38,11 @@ export class NegociacoesView extends View{
             </table>
         `;
     }
-
-    //metodo para atualizar o template
-    //recebe a model do controller no metodo update, que é a nossa lista/array - controller negociacoes instanciado
-
+    //update espera uma string no view.ts, não o tipo Negociacoes
     update(model: Negociacoes):void{
-        //Sobrescreve no DOM o modelo criado em template() - renderiza esse elemento dentro de this.elemento, ou seja, dentro da div com id negociacoesView
 
         const template = this.template(model);
         console.log(template)
-
-        //passa para o modelo
-        //this.elemento.innerHTML = this.template(model);
         this.elemento.innerHTML = template;
     }
 }
