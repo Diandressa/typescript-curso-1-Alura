@@ -8,3 +8,6 @@ form.addEventListener('submit', event => {
     event.preventDefault();
     controller.adiciona();
 });
+//não faz sentido instancia a classe View pq ele é um modelo a ser herdado. Ela sozinha é incompleta, precisa da classe filha para definir os tipos e template
+//por isso ela será abstrata
+//const view = new View('seletor')

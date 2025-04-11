@@ -5,6 +5,7 @@ export class MensagemView extends View<string>{
     //herdar de View.ts os códigos iguais, herdar com extends na classe
 
     //herdar template de View e enviar um retorno para lá
+    //com abstract template sou obrigada a definir o template, se não o código da erro e não compila
     template(model:string):string{
         return `
             <p class="alert alert-info">${model}</p>
