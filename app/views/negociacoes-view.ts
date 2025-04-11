@@ -1,14 +1,9 @@
 import { Negociacoes } from "../models/negociacoes.js";
+import { View } from "./view.js";
 
-export class NegociacoesView {
-    //guardar o elemento do DOM que peguei
-    private elemento: HTMLElement
-
-    //seletor espera o id da index.html
-    constructor(seletor: string){
-        //coloca o seletor na var elemento, que defini no construtor
-        this.elemento = document.querySelector(seletor) as HTMLElement;
-    }
+export class NegociacoesView extends View{
+  
+    //herdar de View.ts os códigos iguais, herdar com extends na classe
 
     template(model: Negociacoes):string {
         return `

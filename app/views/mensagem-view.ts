@@ -1,10 +1,7 @@
-export class MensagemView{
-    private elemento: HTMLElement;
+import { View } from "./view.js";
 
-
-    constructor(seletor:string){
-        this.elemento = document.querySelector(seletor);
-    }
+export class MensagemView extends View{
+    //herdar de View.ts os códigos iguais, herdar com extends na classe
 
     template(model:string):string{
         return `

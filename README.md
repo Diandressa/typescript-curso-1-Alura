@@ -20,6 +20,13 @@ No terminal, precisamos baixar os módulos da aplicação:
 
 `npm install`
 
+### Permitir execução de script
+
+Executar o VScode como administrador
+
+`Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+
+
 ### Dist/ npm run serve
 
 Tudo que está dentro da pasta dist vai ser compartilhado com nosso navegador.
