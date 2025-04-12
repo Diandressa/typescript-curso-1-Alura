@@ -23,7 +23,7 @@ export class NegociacoesView extends View {
             return `
                         <tr>
                             <!-- date, considera a localidade do navegador atual e  formata ao exibir na tela-->
-                            <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
+                            <td>${this.formatar(negociacao.data)}</td>
                             <td>${negociacao.quantidade}</td>
                             <td>${negociacao.valor}</td>
                         </tr>
@@ -34,5 +34,9 @@ export class NegociacoesView extends View {
                 
             </table>
         `;
+    }
+    //Só acesso esse método nessa classe, nem nas filhas posso acessar
+    formatar(data) {
+        return new Intl.DateTimeFormat().format(data);
     }
 }
