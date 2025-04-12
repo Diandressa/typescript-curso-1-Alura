@@ -15,7 +15,7 @@ export class Negociacao {
 
     get data():Date{
         //criamos uma variável com o getDate que pega a data privada, porém é uma cópia agora, uma nova referência
-        const data = new Date(this._data.getDate())
+        const data = new Date(this._data)
         return data;
     }
 }
