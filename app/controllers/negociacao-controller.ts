@@ -24,32 +24,21 @@ export class NegociacaoController {
     }
 
     //retorna vazio
-    adiciona():void{
+    public adiciona():void{
         const negociacao = this.criaNegociacao();
-        
-        //com o getDate na model, o setDate compila mas no navegador não altera a data
-        //isso se chama programação defensiva
-        negociacao.data.setDate(12)
 
         //adicionar na lista negociacoes
         this.negociacoes.adiciona(negociacao);  
-        
-        //depois de adicionar o item na lista eu chamo o update na view
-        this.negociacoesView.update(this.negociacoes)
-
-        //mensagem após adicionar
-        this.mensagemView.update("Negociações adicionada com sucesso");
-
-        //imprime a lista no console
-        //const negociacoesLista = this.negociacoes.lista()
-        //console.log(negociacoesLista)
 
         //limpa o form
         this.limparFormulario();
+
+        //atualiza view ao adicionar
+        this.atualizaView();
     }
 
     //retorna tipo Negociacao
-    criaNegociacao():Negociacao{
+    private criaNegociacao():Negociacao{
         const exp = /-/g;
         const date = new Date(this.inputData.value.replace(exp, ','));
         const quantidade = parseInt(this.inputQuantidade.value)
@@ -58,10 +47,15 @@ export class NegociacaoController {
         return new Negociacao(date, quantidade,valor)
     }
 
-    limparFormulario():void{
+    private limparFormulario():void{
         this.inputData.value = '';
         this.inputQuantidade.value = '';
         this.inputValor.value = '';
         this.inputData.focus();
+    }
+
+    private atualizaView():void{
+        this.negociacoesView.update(this.negociacoes)
+        this.mensagemView.update("Negociações adicionada com sucesso");
     }
 }

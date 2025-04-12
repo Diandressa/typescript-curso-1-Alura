@@ -11,5 +11,3 @@ export class Negociacoes {
         return [...this.negociacoes];
     }
 }
-//instancia a lista
-const negociacoes = new Negociacoes();
