@@ -8,7 +8,7 @@ export class NegociacoesView extends View<Negociacoes>{
 
     //herdar template de View e enviar um retorno para lá
     //template espera uma string no view.ts, não o tipo Negociacoes
-    template(model: Negociacoes):string {
+    protected template(model: Negociacoes):string {
         return `
             <table class="table table-hover table-bordered">
 
@@ -38,11 +38,5 @@ export class NegociacoesView extends View<Negociacoes>{
                 
             </table>
         `;
-    }
-    //update espera uma string no view.ts, não o tipo Negociacoes
-    update(model: Negociacoes):void{
-
-        const template = this.template(model);
-        this.elemento.innerHTML = template;
     }
 }

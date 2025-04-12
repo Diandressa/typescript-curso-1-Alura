@@ -35,9 +35,4 @@ export class NegociacoesView extends View {
             </table>
         `;
     }
-    //update espera uma string no view.ts, não o tipo Negociacoes
-    update(model) {
-        const template = this.template(model);
-        this.elemento.innerHTML = template;
-    }
 }
