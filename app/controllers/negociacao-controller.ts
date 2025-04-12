@@ -7,13 +7,13 @@ export class NegociacaoController {
     private inputData:HTMLInputElement
     private inputQuantidade:HTMLInputElement
     private inputValor:HTMLInputElement
-
     private negociacoes = new Negociacoes;
-
     //passa o seletor do index.html para o construtor de negociacoes-view
     private negociacoesView = new NegociacoesView('#negociacoesView');
-
     private mensagemView = new MensagemView("#mensagemView");
+    //simular uma constante, por convenção usamos nome maiúsculo
+    private readonly SABADO = 6;
+    private readonly DOMINGO = 0;
 
     constructor(){
         this.inputData = document.querySelector("#data")
@@ -26,24 +26,27 @@ export class NegociacaoController {
     //retorna vazio
     public adiciona():void{
         const negociacao = this.criaNegociacao();
-
-        //retorna o dia da semnana de 0 a 6
-        if(negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6){
-            // entre 1 e 5, 0 é domingo e 6 sábado
-            //adicionar na lista negociacoes
-            this.negociacoes.adiciona(negociacao);  
-
-            //limpa o form
-            this.limparFormulario();
-
-            //atualiza view ao adicionar
-            this.atualizaView();
-
-            console.log(negociacao.data.getDay())
-        } else {
-            this.mensagemView.update("Apenas negociações em dias úteis são aceitas")
+        if(!this.diaUtil(negociacao.data)){
+            //se ele não é dia útil da erro
+            this.mensagemView.update("Apenas negociações em dias úteis são aceitas");
+            return;
         }
             
+        this.negociacoes.adiciona(negociacao);  
+
+        //limpa o form
+        this.limparFormulario();
+
+        //atualiza view ao adicionar
+        this.atualizaView();
+
+        console.log(negociacao.data.getDay())
+    
+    }
+
+    private diaUtil(data: Date){
+        //negociacao.data.getDay() > this.DOMINGO && negociacao.data.getDay() < this.SABADO
+        return data.getDay() > this.DOMINGO && data.getDay() < this.SABADO
     }
 
     //retorna tipo Negociacao
