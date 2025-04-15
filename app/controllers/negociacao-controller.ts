@@ -10,9 +10,9 @@ export class NegociacaoController {
     private inputValor:HTMLInputElement
     private negociacoes = new Negociacoes;
     //passa o seletor do index.html para o construtor de negociacoes-view
-    //true aplica a lógica de impedir script malicioso, a lógica está em view.ts
+    //true aplica a lógica de impedir script malicioso, a lógica está em view.ts, segundo parâmetro definimos como opcional
     private negociacoesView = new NegociacoesView('#negociacoesView', true);
-    private mensagemView = new MensagemView("#mensagemView", false);
+    private mensagemView = new MensagemView("#mensagemView");
 
     constructor(){
         this.inputData = document.querySelector("#data")

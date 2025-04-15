@@ -7,9 +7,9 @@ export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes;
         //passa o seletor do index.html para o construtor de negociacoes-view
-        //true aplica a lógica de impedir script malicioso, a lógica está em view.ts
+        //true aplica a lógica de impedir script malicioso, a lógica está em view.ts, segundo parâmetro definimos como opcional
         this.negociacoesView = new NegociacoesView('#negociacoesView', true);
-        this.mensagemView = new MensagemView("#mensagemView", false);
+        this.mensagemView = new MensagemView("#mensagemView");
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
         this.inputValor = document.querySelector("#valor");
