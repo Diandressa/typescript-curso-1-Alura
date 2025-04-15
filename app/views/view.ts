@@ -11,7 +11,15 @@ export abstract class View<T>{
 
     //se ele não passou nada então recebe undefined
     constructor(seletor:string, escapar?: boolean){
-        this.elemento = document.querySelector(seletor);
+        const elemento = document.querySelector(seletor);
+        if (elemento){
+            //se elemento não for null ele coloca na variável this.elemento e defini ele como HTMLElement
+            this.elemento = elemento as HTMLElement
+        } else {
+            throw Error(`Seletor ${seletor} não existe no DOM. Verifique com desenvolvedor`)
+        }
+
+
         //mudar o valor de escapar para true e eu passo true, se for verdadeiro ele coloca o valor que passei na variável
         //se for undefined ele atribui o valor false(valor que passei), se for true ele atribui o valor true(valor que passei)
         if(escapar){

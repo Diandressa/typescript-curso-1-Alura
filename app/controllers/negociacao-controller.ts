@@ -12,6 +12,7 @@ export class NegociacaoController {
     //passa o seletor do index.html para o construtor de negociacoes-view
     //true aplica a lógica de impedir script malicioso, a lógica está em view.ts, segundo parâmetro definimos como opcional
     private negociacoesView = new NegociacoesView('#negociacoesView', true);
+    // private negociacoesView = new NegociacoesView('#negociacoesViewxx', true); dá erro pq esse seletor não existe no DOM, verificados com if no constructor de view.ts
     private mensagemView = new MensagemView("#mensagemView");
 
     constructor(){
@@ -29,7 +30,7 @@ export class NegociacaoController {
         //posso forçar o tipo nessa sintaxe tb:
         //this.inputValor = <HTMLInputElement>document.querySelector("#valor");
 
-        
+
         //chama o update trazendo o template e colocando na div assim que a página carrega e construo o objeto
         this.negociacoesView.update(this.negociacoes)
     }
