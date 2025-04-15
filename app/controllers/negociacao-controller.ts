@@ -15,7 +15,14 @@ export class NegociacaoController {
     private mensagemView = new MensagemView("#mensagemView");
 
     constructor(){
-        this.inputData = document.querySelector("#data")
+        //se eu passar um id que não existe, returna null no console. Ao adicionar da erro pq a a div com esse id não existe
+        //o ideal é ter um retorno de um valor nulo ou um tipo HTMLInputElement
+        //mas, por padrão, o typescript remove essa checagem se for null || HTMLInputElement
+
+        //essa variável pode ser string ou number
+        //ex: const x:string | number = "Flavio", não dá erro pq declarei uma string e a variável pode ser string ou number
+        this.inputData = document.querySelector("#datax")
+        console.log(this.inputData)
         this.inputQuantidade = document.querySelector("#quantidade")
         this.inputValor = document.querySelector("#valor")
         //chama o update trazendo o template e colocando na div assim que a página carrega e construo o objeto
