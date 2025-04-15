@@ -18,8 +18,9 @@ export class Negociacao {
         const data = new Date(this._data)
         return data;
     }
-
-    public criaDe(dataString: string, quantidadeString:string, valorString:string):Negociacao{
+    //static - método que acessamos diretamente pela classe, sem precisar instanciar a classe no controller e passar os dados
+    //métodos static sempre public para poder acessar do controller
+    public static criaDe(dataString: string, quantidadeString:string, valorString:string):Negociacao{
         const exp = /-/g;
 
         const date = new Date(dataString.replace(exp, ','));

@@ -17,10 +17,19 @@ export class NegociacaoController {
     }
     //retorna vazio
     adiciona() {
-        //preciso instanciar com valores fictícios, para depois sobrepor com os do form
-        const negociacaoTemp = new Negociacao(null, 0, 0);
         //passa o value do inputs para a função
-        const negociacao = negociacaoTemp.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);
+        /*
+        const negociacao = new Negociacao(null,0,0).criaDe(
+            this.inputData.value,
+            this.inputQuantidade.value,
+            this.inputValor.value
+        );
+        */
+        //quero criar um método que possa ser acessado independente de ser instanciado ou não, ainda dentro da classe Negociação
+        //método que acessamos diretamente na classe, sem precisar instanciar a classe -> usamos o static na classe Negociacao
+        const negociacao = Negociacao.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);
+        //Não consigo acessar pela variável, só diretamente pela classe Negociacao
+        //negociacao.
         if (!this.diaUtil(negociacao.data)) {
             //se ele não é dia útil da erro
             this.mensagemView.update("Apenas negociações em dias úteis são aceitas");
