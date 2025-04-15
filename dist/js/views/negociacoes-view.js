@@ -27,6 +27,7 @@ export class NegociacoesView extends View {
                             <td>${negociacao.quantidade}</td>
                             <td>${negociacao.valor}</td>
                         </tr>
+                        <!-- <script>alert('oi')</script> -->
                         `;
         }).join('')}
                     <!-- o map converte cada objeto da lista em uma array de strings, depois, o join, junta as string tendo como separador o espaço-->
@@ -35,6 +36,8 @@ export class NegociacoesView extends View {
             </table>
         `;
     }
+    //Alguns navegadores tem proteção contra scripts passados no console de forma maliciosa, porém devemos implementar esse segurança a mais no nosso código tb.
+    //Caso apareça um script no nosso template devemos remove-lo
     //Só acesso esse método nessa classe, nem nas filhas posso acessar
     formatar(data) {
         return new Intl.DateTimeFormat().format(data);
