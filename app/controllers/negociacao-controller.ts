@@ -5,9 +5,9 @@ import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 
 export class NegociacaoController {
-    private inputData:HTMLInputElement
-    private inputQuantidade:HTMLInputElement
-    private inputValor:HTMLInputElement
+    private inputData:HTMLInputElement;
+    private inputQuantidade:HTMLInputElement;
+    private inputValor:HTMLInputElement;
     private negociacoes = new Negociacoes;
     //passa o seletor do index.html para o construtor de negociacoes-view
     //true aplica a lógica de impedir script malicioso, a lógica está em view.ts, segundo parâmetro definimos como opcional
@@ -21,10 +21,15 @@ export class NegociacaoController {
 
         //essa variável pode ser string ou number
         //ex: const x:string | number = "Flavio", não dá erro pq declarei uma string e a variável pode ser string ou number
-        this.inputData = document.querySelector("#datax")
-        console.log(this.inputData)
-        this.inputQuantidade = document.querySelector("#quantidade")
-        this.inputValor = document.querySelector("#valor")
+
+        //não quero que no querySelector ele considere o id que peguei sendo null ou HTMLInputElement, quero que ele seja somente do tipo HTMLInputElement, para isso usamos o as HTMLInputElement, força o tipo para o definido após o as
+        this.inputData = document.querySelector("#data") as HTMLInputElement;
+        this.inputQuantidade = document.querySelector("#quantidade") as HTMLInputElement;
+        this.inputValor = document.querySelector("#valor") as HTMLInputElement;
+        //posso forçar o tipo nessa sintaxe tb:
+        //this.inputValor = <HTMLInputElement>document.querySelector("#valor");
+
+        
         //chama o update trazendo o template e colocando na div assim que a página carrega e construo o objeto
         this.negociacoesView.update(this.negociacoes)
     }
