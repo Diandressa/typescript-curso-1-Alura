@@ -52,7 +52,8 @@ Roda na porta 3000
             "outDir": "dist/js",
             "target": "ES6",
             "noEmitOnError": true,
-            "noImplicitAny": true
+            "noImplicitAny": true,
+            "removeComments": true
         },
         "include": ["app/**/*"]
     }
