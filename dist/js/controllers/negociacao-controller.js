@@ -17,7 +17,10 @@ export class NegociacaoController {
     }
     //retorna vazio
     adiciona() {
-        const negociacao = this.criaNegociacao();
+        //preciso instanciar com valores fictícios, para depois sobrepor com os do form
+        const negociacaoTemp = new Negociacao(null, 0, 0);
+        //passa o value do inputs para a função
+        const negociacao = negociacaoTemp.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);
         if (!this.diaUtil(negociacao.data)) {
             //se ele não é dia útil da erro
             this.mensagemView.update("Apenas negociações em dias úteis são aceitas");
@@ -33,14 +36,6 @@ export class NegociacaoController {
     diaUtil(data) {
         //negociacao.data.getDay() > this.DOMINGO && negociacao.data.getDay() < this.SABADO
         return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO;
-    }
-    //retorna tipo Negociacao
-    criaNegociacao() {
-        const exp = /-/g;
-        const date = new Date(this.inputData.value.replace(exp, ','));
-        const quantidade = parseInt(this.inputQuantidade.value);
-        const valor = parseFloat(this.inputValor.value);
-        return new Negociacao(date, quantidade, valor);
     }
     limparFormulario() {
         this.inputData.value = '';
