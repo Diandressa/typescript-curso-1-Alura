@@ -51,6 +51,7 @@ Roda na porta 3000
             "target": "ES6",
             "noEmitOnError": true,
             "noImplicitAny": true
+            "removeComments": true
         },
         "include": ["app/**/*"]
     }
