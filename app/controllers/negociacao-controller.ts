@@ -24,6 +24,7 @@ export class NegociacaoController {
         //ex: const x:string | number = "Flavio", não dá erro pq declarei uma string e a variável pode ser string ou number
 
         //não quero que no querySelector ele considere o id que peguei sendo null ou HTMLInputElement, quero que ele seja somente do tipo HTMLInputElement, para isso usamos o as HTMLInputElement, força o tipo para o definido após o as
+        //o querySelector por padrão recebe tipo definido | null, ao usar o as limitados o querySelector a receber o tipo que passei após o as 
         this.inputData = document.querySelector("#data") as HTMLInputElement;
         this.inputQuantidade = document.querySelector("#quantidade") as HTMLInputElement;
         this.inputValor = document.querySelector("#valor") as HTMLInputElement;
