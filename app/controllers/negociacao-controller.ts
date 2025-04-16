@@ -5,25 +5,59 @@ import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 
 export class NegociacaoController {
-    private inputData:HTMLInputElement
-    private inputQuantidade:HTMLInputElement
-    private inputValor:HTMLInputElement
+    private inputData:HTMLInputElement;
+    private inputQuantidade:HTMLInputElement;
+    private inputValor:HTMLInputElement;
     private negociacoes = new Negociacoes;
     //passa o seletor do index.html para o construtor de negociacoes-view
-    private negociacoesView = new NegociacoesView('#negociacoesView');
+    //true aplica a lógica de impedir script malicioso, a lógica está em view.ts, segundo parâmetro definimos como opcional
+    private negociacoesView = new NegociacoesView('#negociacoesView', true);
+    // private negociacoesView = new NegociacoesView('#negociacoesViewxx', true); dá erro pq esse seletor não existe no DOM, verificados com if no constructor de view.ts
     private mensagemView = new MensagemView("#mensagemView");
 
     constructor(){
-        this.inputData = document.querySelector("#data")
-        this.inputQuantidade = document.querySelector("#quantidade")
-        this.inputValor = document.querySelector("#valor")
+        //se eu passar um id que não existe, returna null no console. Ao adicionar da erro pq a a div com esse id não existe
+        //o ideal é ter um retorno de um valor nulo ou um tipo HTMLInputElement
+        //mas, por padrão, o typescript remove essa checagem se for null || HTMLInputElement
+
+        //essa variável pode ser string ou number
+        //ex: const x:string | number = "Flavio", não dá erro pq declarei uma string e a variável pode ser string ou number
+
+        //não quero que no querySelector ele considere o id que peguei sendo null ou HTMLInputElement, quero que ele seja somente do tipo HTMLInputElement, para isso usamos o as HTMLInputElement, força o tipo para o definido após o as
+        //o querySelector por padrão recebe tipo definido | null, ao usar o as limitados o querySelector a receber o tipo que passei após o as 
+        this.inputData = document.querySelector("#data") as HTMLInputElement;
+        this.inputQuantidade = document.querySelector("#quantidade") as HTMLInputElement;
+        this.inputValor = document.querySelector("#valor") as HTMLInputElement;
+        //posso forçar o tipo nessa sintaxe tb:
+        //this.inputValor = <HTMLInputElement>document.querySelector("#valor");
+
+
         //chama o update trazendo o template e colocando na div assim que a página carrega e construo o objeto
         this.negociacoesView.update(this.negociacoes)
     }
 
     //retorna vazio
     public adiciona():void{
-        const negociacao = this.criaNegociacao();
+        //passa o value do inputs para a função
+        /*
+        const negociacao = new Negociacao(null,0,0).criaDe(
+            this.inputData.value,
+            this.inputQuantidade.value,
+            this.inputValor.value
+        );
+        */
+
+        //quero criar um método que possa ser acessado independente de ser instanciado ou não, ainda dentro da classe Negociação
+        //método que acessamos diretamente na classe, sem precisar instanciar a classe -> usamos o static na classe Negociacao
+        const negociacao = Negociacao.criaDe(
+            this.inputData.value,
+            this.inputQuantidade.value,
+            this.inputValor.value
+        );
+
+        //Não consigo acessar pela variável, só diretamente pela classe Negociacao
+        //negociacao.
+
         if(!this.diaUtil(negociacao.data)){
             //se ele não é dia útil da erro
             this.mensagemView.update("Apenas negociações em dias úteis são aceitas");
@@ -45,16 +79,6 @@ export class NegociacaoController {
     private diaUtil(data: Date){
         //negociacao.data.getDay() > this.DOMINGO && negociacao.data.getDay() < this.SABADO
         return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO
-    }
-
-    //retorna tipo Negociacao
-    private criaNegociacao():Negociacao{
-        const exp = /-/g;
-        const date = new Date(this.inputData.value.replace(exp, ','));
-        const quantidade = parseInt(this.inputQuantidade.value)
-        const valor = parseFloat(this.inputValor.value)
-
-        return new Negociacao(date,quantidade,valor)
     }
 
     private limparFormulario():void{

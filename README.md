@@ -50,10 +50,14 @@ Roda na porta 3000
             "outDir": "dist/js",
             "target": "ES6",
             "noEmitOnError": true,
-            "noImplicitAny": true
+            "noImplicitAny": true,
+            "removeComments": true,
+            "strictNullChecks": true
         },
         "include": ["app/**/*"]
     }
+
+>Com strictNullChecks ativado, o TypeScript exige que variáveis sejam explicitamente tipadas para aceitar null ou undefined, caso contrário, um erro de compilação ocorrerá.
 
 ### package.json
 
