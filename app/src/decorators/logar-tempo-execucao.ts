@@ -27,3 +27,5 @@ export function logarTempoDeExecucao(){
         return descriptor;
     }
 }
+
+//O descriptor nos permite acessar e modificar o método original através de descriptor.value.
